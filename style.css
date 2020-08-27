@@ -1,0 +1,13 @@
+form {
+    background-color: silver;
+    border: antiquewhite;
+    width: fit-content;
+}
+
+label {
+    background-color: bisque;
+}
+
+footer{
+    background-color: darkcyan;
+}
