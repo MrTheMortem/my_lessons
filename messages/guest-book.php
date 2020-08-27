@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/db.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/autoload.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>

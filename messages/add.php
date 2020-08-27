@@ -1,4 +1,6 @@
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
+$db = new DB(\PDO::FETCH_OBJ);
 
 $db = new DB(PDO::FETCH_OBJ);
 

@@ -7,8 +7,9 @@ class DB
 
     public function __construct($fetchMode)
     {
+        include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
         $this->fetchMode = $fetchMode;
-        $this->connection = new PDO('mysql:host=localhost;dbname=gb', 'root', '');
+        $this->connection = new PDO('mysql:host=' . Config::get('db_host') . ';dbname=' . Config::get('db_name') . ';charset=utf8', Config::get('db_user'), Config::get('db_pass'));
     }
 
     public function getConnection()
@@ -28,7 +29,7 @@ class DB
         return $stm->fetchAll($this->fetchMode);
     }
 
-    public function execute($query, $params = [], &$stm)
+    public function execute($query, $params = [], &$stm = '')
     {
         $stm = $this->connection->prepare($query);
         return $stm->execute($params);
@@ -36,7 +37,7 @@ class DB
 
     public function rowCount($query)
     {
-        $this->execute($query, $stm);
+        $this->execute($query, [], $stm);
         return $stm->rowCount();
     }
 }

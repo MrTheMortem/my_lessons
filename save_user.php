@@ -1,7 +1,5 @@
 <?php
-// подключаемся к базе
-include 'db.php';
-include 'Core.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 $db = new DB(\PDO::FETCH_OBJ);
 
 if (isset($_POST['login'])) {
@@ -26,7 +24,7 @@ $login = Core::clearVar($login);
 $password = Core::clearVar($password);
 // проверка на существование пользователя с таким же логином
 $myRow = $db->fetch("SELECT id FROM users WHERE login = :login", ['login' => $login]);
-if (!empty($mRow->id)) {
+if (!empty($myRow->id)) {
 //    header('Location:/reg.php');
     exit('Пользователь с таким именем уже существует.');
 }

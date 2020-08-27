@@ -1,8 +1,7 @@
 <?php
 session_start();//  запуск сессии в самом начале кода страницы, иначе хуй в жопу
 // подключаемся к базе
-include 'db.php';
-include 'Core.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 $db = new DB(\PDO::FETCH_OBJ);
 if (isset($_POST['login'])) {
     $login = $_POST['login'];
