@@ -1,5 +1,6 @@
 <?php
-    require '../db.php';
+
+$db = new DB(PDO::FETCH_OBJ);
 
 if(isset($_POST["addToDB"])) {
     $name = ($_POST['name']);
@@ -8,10 +9,10 @@ if(isset($_POST["addToDB"])) {
     $answer = ($_POST['answer']);
 
 
-    require '../db.php';
 
-    $query = $pdo->prepare("INSERT INTO message(name,email,message) VALUES (:name, :email, :message)");
-    $query->execute(['name' => $name, 'email' => $email,'message' => $message]);
+
+
+    $query = $db->execute("INSERT INTO message(name,email,message) VALUES (:name, :email, :message)",['name' => $name, 'email' => $email,'message' => $message]);
 
 }else{
     echo(' метод POST не прошел');

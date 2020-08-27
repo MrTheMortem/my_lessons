@@ -31,8 +31,8 @@ if (!empty($mRow->id)) {
     exit('Пользователь с таким именем уже существует.');
 }
 // если такого нет, то сохраняем данные
-$sql = "INSERT INTO users (`login`, `password`,`status`) VALUES (:login, :password,:status)";
-$result2 = $db->execute($sql, ['login' => $login, 'password' => $password, 'status' => 10]);
+
+$result2 = $db->execute("INSERT INTO users (`login`, `password`,`status`) VALUES (:login, :password,:status)", ['login' => $login, 'password' => $password, 'status' => 10]);
 
 
 // Проверяем, есть ли ошибки

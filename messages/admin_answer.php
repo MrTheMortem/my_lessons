@@ -1,11 +1,13 @@
 <?php
 require '../db.php';
 
+
+$db = new DB(\PDO::FETCH_OBJ);
+
 $id = $_GET['id'];
 $answer = $_POST['answer'];
 
-$query = $pdo->prepare('UPDATE message SET answer = :answer WHERE id=:id');
-$query->execute(['answer'=>$answer, 'id'=>$id]);
+$query = $db->fetch('UPDATE message SET answer = :answer WHERE id=:id',['answer'=>$answer, 'id'=>$id]);
 
 header('Location:/messages/guest-book.php');
 ?>
